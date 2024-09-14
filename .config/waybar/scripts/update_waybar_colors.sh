@@ -243,3 +243,5 @@ killall -SIGUSR2 waybar && echo "Señal de recarga enviada a Waybar"
 
 # Toca el archivo CSS para asegurar que Waybar detecte el cambio
 touch ~/.config/waybar/style.css
+
+dunstify "Colores actualizados" "Los colores de los programas han sido actualizados con éxito"
