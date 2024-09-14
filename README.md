@@ -2,6 +2,17 @@
 
 Welcome to my personal Arch Linux configuration featuring Hyprland! This repository contains my dotfiles and setup instructions for a customized Arch Linux environment with Hyprland as the window manager.
 
+## Table of Contents
+
+- [Preview](#preview)
+- [Installation](#installation)
+- [Required Packages](#required-packages)
+- [Wireless Setup (Optional)](#wireless-setup-optional)
+- [Usage](#usage)
+- [Key Shortcuts](#key-shortcuts)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Preview
 
 ![Screenshot](https://github.com/user-attachments/assets/6596d915-5a5d-44b4-953c-1de6ffec7215)
@@ -14,17 +25,6 @@ Welcome to my personal Arch Linux configuration featuring Hyprland! This reposit
 ![Screenshot7](https://github.com/user-attachments/assets/88fdf57d-cd98-4422-addb-1de3230da852)
 ![Screenshot8](https://github.com/user-attachments/assets/11ab1007-a8bf-4944-8bdd-017a649fe2ef)
 ![Screenshot9](https://github.com/user-attachments/assets/a3d59ff6-809f-45d1-83e0-4d0e4344e052)
-
-## Table of Contents
-
-- [Preview](#preview)
-- [Installation](#installation)
-- [Required Packages](#required-packages)
-- [Wireless Setup (Optional)](#wireless-setup-optional)
-- [Usage](#usage)
-- [Key Shortcuts](#key-shortcuts)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
