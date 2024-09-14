@@ -90,7 +90,7 @@ iwctl
 [iwd]# station <device> connect <SSID>
 ```
 
-## usage
+## Usage
 After installation and setup, log out and choose Hyprland as your window manager at the login screen. Your customized environment should now be ready to use!
 
 ## Key Shortcuts
@@ -153,10 +153,8 @@ Here are some of the key shortcuts defined in the Hyprland configuration:
 
 Remember to customize these shortcuts according to your preferences in the `~/.config/hypr/hyprland.conf` file.
 
-## contributing
+## Contributing
 Contributions are welcome! Feel free to open an issue or submit a pull request if you have any suggestions or improvements.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
