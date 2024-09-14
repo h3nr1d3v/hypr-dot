@@ -46,9 +46,9 @@ cd hypr-dot
 cp -r .config/* ~/.config/
 cp -r .local/* ~/.local/share/
 cp -r Pictures/* ~/Pictures/
+```
 
-4. Install the required packages:
-
+## Install the required packages:
 ```bash
 ### Pacman Packages
 
@@ -60,7 +60,7 @@ sudo pacman -S hyprland brightnessctl libpng libjpeg-turbo imagemagick gawk grep
 ### AUR packages
 ```bash
 yay -S dunst ranger swww waybar sway-bg flameshot-git pactl pamixer
-
+```
 ## Wireless Setup (Optional)
 If you prefer to use `iwd` instead of NetworkManager for wireless connectivity, follow these steps:
 
@@ -88,6 +88,7 @@ iwctl
 [iwd]# station <device> scan
 [iwd]# station <device> get-networks
 [iwd]# station <device> connect <SSID>
+```
 
 ## usage
 After installation and setup, log out and choose Hyprland as your window manager at the login screen. Your customized environment should now be ready to use!
