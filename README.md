@@ -48,7 +48,7 @@ cp -r .local/* ~/.local/share/
 cp -r Pictures/* ~/Pictures/
 ```
 
-## Install the required packages:
+## Required Packages:
 ```bash
 ### Pacman Packages
 
