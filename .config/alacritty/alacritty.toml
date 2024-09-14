@@ -1,0 +1,13 @@
+import = ["/home/h3nr1/.config/alacritty/colors.toml"]
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font"
+style = "regular"
+
+[window]
+decorations = "none"
+opacity = 0.55
+
+[window.padding]
+x = 15
+y = 15
