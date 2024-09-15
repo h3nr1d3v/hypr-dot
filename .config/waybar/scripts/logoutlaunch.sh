@@ -15,13 +15,13 @@ selected_option=$(echo -e $options | rofi -dmenu -p "Seleccione una opción:" -t
 
 # Ejecutar la acción seleccionada
 case $selected_option in
-    Apagar)
+    Poweroff)
         systemctl poweroff
         ;;
-    Reiniciar)
+    Reboot)
         systemctl reboot
         ;;
-    Salir)
+    Exit)
         hyprctl dispatch exit
         ;;
     *)
