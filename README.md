@@ -1,6 +1,6 @@
 # Arch Linux + Hyprland Configuration
 
-Welcome to my personal Arch Linux configuration featuring Hyprland! This repository contains my dotfiles and setup instructions for a customized Arch Linux environment with Hyprland as the window manager.
+Welcome to my personal Arch Linux configuration featuring Hyprland! This repository contains my dotfiles and setup instructions for a customized Arch Linux environment with Hyprland as the window manager. This repository includes a series of color schemes that dynamically adapt to the wallpaper, providing a cohesive and visually appealing experience.
 
 ## Table of Contents
 
