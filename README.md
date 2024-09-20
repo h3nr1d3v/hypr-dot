@@ -28,6 +28,7 @@ Welcome to my personal Arch Linux configuration featuring Hyprland! This reposit
 ![Wallpaper10](https://github.com/user-attachments/assets/cec4a850-555b-48ae-997e-4de06e1ae4df)
 ![Wallpaper11](https://github.com/user-attachments/assets/d9ea40d3-0dea-4adc-9767-836505c2c693)
 ![Wallpaper12](https://github.com/user-attachments/assets/367f4db7-9a0e-4280-91f7-1c743513c902)
+![Wallpaper13](https://github.com/user-attachments/assets/267b2a39-69b8-4d28-89bf-1d5aaa530468)
 
 
 1. Clone this repository:
