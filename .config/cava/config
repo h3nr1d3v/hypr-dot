@@ -1,13 +1,13 @@
 [color]
 gradient = 1
-gradient_color_1 = '#a4b6cd'
-gradient_color_2 = '#929ba7'
-gradient_color_3 = '#808080'
-gradient_color_4 = '#6e6559'
-gradient_color_5 = '#5b4932'
-gradient_color_6 = '#5b4932'
-gradient_color_7 = '#5b4932'
-gradient_color_8 = '#5b4932'
+gradient_color_1 = '#4c2323'
+gradient_color_2 = '#655151'
+gradient_color_3 = '#7f7f7f'
+gradient_color_4 = '#99adad'
+gradient_color_5 = '#b3dcdc'
+gradient_color_6 = '#b3dcdc'
+gradient_color_7 = '#b3dcdc'
+gradient_color_8 = '#b3dcdc'
 
 [output]
 bar_width = 2

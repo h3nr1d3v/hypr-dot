@@ -17,6 +17,10 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.mouse = "a"
 vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.expand("~/.local/bin")
+vim.fn.serverstart("/tmp/nvim.pipe")
+local config_path = vim.fn.stdpath('config')
+package.path = package.path .. ';' .. config_path .. '/?.lua'
+
 
 -- Configuración de la fuente
 vim.o.guifont = "FiraCode Nerd Font:h12"
@@ -171,40 +175,63 @@ require('packer').startup(function(use)
   }
 end)
 
+-- Cargar los colores generados dinámicamente
+local dynamic_colors = dofile(vim.fn.stdpath('config') .. '/colors.lua')
+
 -- Configuración del tema Catppuccin
 require("catppuccin").setup({
-    flavour = "macchiato",
+    flavour = "macchiato", -- Puedes cambiar esto si lo deseas
     background = {
         light = "latte",
         dark = "macchiato",
     },
-    transparent_background = false,
+    transparent_background = true,
     show_end_of_buffer = false,
-    term_colors = false,
+    term_colors = true,
     dim_inactive = {
-        enabled = false,
+        enabled = true,
         shade = "dark",
-        percentage = 0.15,
+        percentage = 0.20,
     },
     no_italic = false,
     no_bold = false,
     no_underline = false,
     styles = {
         comments = { "italic" },
-        conditionals = { "italic" },
-        loops = {},
-        functions = {},
-        keywords = {},
+        conditionals = { "italic", "bold" },
+        loops = { "bold" },
+        functions = { "bold" },
+        keywords = { "italic" },
         strings = {},
         variables = {},
-        numbers = {},
-        booleans = {},
+        numbers = { "bold" },
+        booleans = { "bold", "italic" },
         properties = {},
-        types = {},
-        operators = {},
+        types = { "italic" },
+        operators = { "bold" },
     },
-    color_overrides = {},
-    custom_highlights = {},
+    color_overrides = {
+        macchiato = dynamic_colors,
+    },
+    custom_highlights = {
+        CursorLine = { bg = dynamic_colors.surface0 },
+        LineNr = { fg = dynamic_colors.overlay0 },
+        CursorLineNr = { fg = dynamic_colors.pink, style = { "bold" } },
+        DiagnosticError = { fg = dynamic_colors.red },
+        DiagnosticWarn = { fg = dynamic_colors.yellow },
+        DiagnosticInfo = { fg = dynamic_colors.blue },
+        DiagnosticHint = { fg = dynamic_colors.green },
+        MatchParen = { fg = dynamic_colors.peach, bg = dynamic_colors.surface1, style = { "bold" } },
+        Pmenu = { bg = dynamic_colors.surface0 },
+        PmenuSel = { bg = dynamic_colors.surface1, fg = dynamic_colors.text },
+        Search = { bg = dynamic_colors.surface2, fg = dynamic_colors.text },
+        IncSearch = { bg = dynamic_colors.peach, fg = dynamic_colors.base },
+        StatusLine = { bg = dynamic_colors.mantle, fg = dynamic_colors.text },
+        NvimTreeNormal = { bg = dynamic_colors.mantle },
+        NvimTreeFolderIcon = { fg = dynamic_colors.yellow },
+        NvimTreeFolderName = { fg = dynamic_colors.blue },
+        NvimTreeOpenedFolderName = { fg = dynamic_colors.blue, style = { "bold" } },
+    },
     integrations = {
         cmp = true,
         gitsigns = true,
@@ -213,8 +240,25 @@ require("catppuccin").setup({
         notify = true,
         mini = {
             enabled = true,
-            indentscope_color = "",
+            indentscope_color = dynamic_colors.surface1,
         },
+        native_lsp = {
+            enabled = true,
+            virtual_text = {
+                errors = { "italic" },
+                hints = { "italic" },
+                warnings = { "italic" },
+                information = { "italic" },
+            },
+            underlines = {
+                errors = { "underline" },
+                hints = { "underline" },
+                warnings = { "underline" },
+                information = { "underline" },
+            },
+        },
+        telescope = true,
+        which_key = true,
     },
 })
 

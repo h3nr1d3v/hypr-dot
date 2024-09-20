@@ -122,8 +122,8 @@ alias remove='sudo pacman -R'
 alias ls='lsd'
 alias la='lsd -la'
 alias vim='nvim'
-alias pi='pipes.sh -t 3'
-alias tty='tty-clock -C 5 -x -b -r'
+alias pi='my-pipes.sh'
+alias tty='my-tty-clock.sh'
 alias ca='cava'
 alias apagar='poweroff'
 alias reiniciar='reboot'
@@ -134,8 +134,9 @@ alias p='pwd'
 alias e='exit'
 alias s='sudo'
 alias an='ani-cli'
-
-
+alias cm='~/.config/cmatrix/dynamic_cmatrix.sh'
+alias ra='ranger'
+alias yt='youtube-cli'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -148,4 +149,6 @@ export NVM_DIR="$HOME/.nvm"
 
 
 export PATH="$HOME/.local/bin:$PATH"
+
+export PATH="$HOME/bin:$PATH"
 

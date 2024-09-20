@@ -1,0 +1,251 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import subprocess
+import argparse
+import json
+import random
+import configparser
+from youtubesearchpython import VideosSearch
+from colorama import init, Fore, Style
+
+# Inicializar colorama para colores en la terminal
+init()
+
+# Configuración
+CONFIG_FILE = os.path.expanduser("~/.youtube_cli_config")
+CACHE_FILE = os.path.expanduser("~/.youtube_cli_cache")
+HISTORY_FILE = os.path.expanduser("~/.youtube_cli_history")
+MAX_CACHE_ENTRIES = 10
+MAX_HISTORY_ENTRIES = 50
+
+def load_config():
+    config = configparser.ConfigParser()
+    config['DEFAULT'] = {
+        'default_limit': '5',
+        'default_quality': 'best',
+        'enable_subtitles': 'False',
+        'data_saver': 'False'
+    }
+    if os.path.exists(CONFIG_FILE):
+        config.read(CONFIG_FILE)
+    return config
+
+def save_config(config):
+    with open(CONFIG_FILE, 'w') as f:
+        config.write(f)
+
+def search_videos(query, limit=5):
+    search = VideosSearch(query, limit=limit)
+    return search.result()['result']
+
+def display_results(results):
+    for i, video in enumerate(results, 1):
+        print(f"{Fore.GREEN}{i}. {Fore.YELLOW}{video['title']} {Fore.CYAN}({video['duration']}){Style.RESET_ALL}")
+        print(f"   Channel: {Fore.MAGENTA}{video['channel']['name']}{Style.RESET_ALL}")
+        print(f"   Views: {Fore.BLUE}{video['viewCount']['short']}{Style.RESET_ALL}")
+        print()
+
+def play_video(video_id, config):
+    print(f"{Fore.CYAN}Intentando reproducir video con ID: {video_id}{Style.RESET_ALL}")
+    try:
+        cmd = ['mpv', f'https://www.youtube.com/watch?v={video_id}', 
+               '--force-window=yes', '--no-terminal',
+               '--script-opts=ytdl_hook-ytdl_path=/usr/bin/yt-dlp',
+               '--msg-level=all=debug']
+        
+        if config.getboolean('DEFAULT', 'enable_subtitles'):
+            cmd.append('--sub-auto=all')
+        
+        if config.getboolean('DEFAULT', 'data_saver'):
+            cmd.extend(['--ytdl-format=bestaudio[ext=m4a]/best[height<=480]'])
+        else:
+            cmd.extend(['--ytdl-format=bestvideo[height<=?1080]+bestaudio/best'])
+        
+        print(f"Ejecutando comando: {' '.join(cmd)}")
+        result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+        print(f"{Fore.GREEN}Reproducción finalizada{Style.RESET_ALL}")
+        print(f"Salida de MPV:\n{result.stdout}")
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"{Fore.RED}Error al reproducir el video: {e}{Style.RESET_ALL}")
+        print(f"Salida de error de MPV:\n{e.stderr}")
+    except FileNotFoundError:
+        print(f"{Fore.RED}Error: MPV no está instalado o no se encuentra en el PATH del sistema.{Style.RESET_ALL}")
+    return False
+
+def download_audio(video_id):
+    print(f"{Fore.CYAN}Descargando audio del video con ID: {video_id}{Style.RESET_ALL}")
+    try:
+        subprocess.run(['yt-dlp', '-x', '--audio-format', 'mp3', 
+                        f'https://www.youtube.com/watch?v={video_id}'], check=True)
+        print(f"{Fore.GREEN}Descarga de audio completada{Style.RESET_ALL}")
+    except subprocess.CalledProcessError as e:
+        print(f"{Fore.RED}Error al descargar el audio: {e}{Style.RESET_ALL}")
+    except FileNotFoundError:
+        print(f"{Fore.RED}Error: yt-dlp no está instalado o no se encuentra en el PATH del sistema.{Style.RESET_ALL}")
+
+def load_cache():
+    if os.path.exists(CACHE_FILE):
+        with open(CACHE_FILE, 'r') as f:
+            return json.load(f)
+    return {}
+
+def save_cache(cache):
+    with open(CACHE_FILE, 'w') as f:
+        json.dump(cache, f)
+
+def add_to_cache(query, results):
+    cache = load_cache()
+    cache[query] = results
+    if len(cache) > MAX_CACHE_ENTRIES:
+        cache.pop(next(iter(cache)))
+    save_cache(cache)
+
+def load_history():
+    if os.path.exists(HISTORY_FILE):
+        with open(HISTORY_FILE, 'r') as f:
+            return json.load(f)
+    return []
+
+def save_history(history):
+    with open(HISTORY_FILE, 'w') as f:
+        json.dump(history, f)
+
+def add_to_history(video_id, title):
+    history = load_history()
+    history.insert(0, {"id": video_id, "title": title})
+    if len(history) > MAX_HISTORY_ENTRIES:
+        history.pop()
+    save_history(history)
+
+def get_related_videos(video_id):
+    related_search = VideosSearch(video_id, limit=10)
+    return related_search.result()['result']
+
+def rate_video(video_id, rating):
+    ratings = load_cache().get('ratings', {})
+    ratings[video_id] = rating
+    cache = load_cache()
+    cache['ratings'] = ratings
+    save_cache(cache)
+    print(f"{Fore.GREEN}Video calificado con {rating} estrellas.{Style.RESET_ALL}")
+
+def main():
+    try:
+        config = load_config()
+        
+        parser = argparse.ArgumentParser(description="YouTube CLI - Busca y reproduce videos de YouTube desde la línea de comandos.")
+        parser.add_argument("query", nargs="*", help="Términos de búsqueda")
+        parser.add_argument("-l", "--limit", type=int, default=int(config['DEFAULT']['default_limit']), help="Número de resultados de búsqueda")
+        parser.add_argument("-d", "--download", action="store_true", help="Descargar audio en lugar de reproducir")
+        parser.add_argument("-p", "--playlist", action="store_true", help="Crear una playlist de videos seleccionados")
+        parser.add_argument("-r", "--random", action="store_true", help="Reproducir videos relacionados aleatoriamente")
+        parser.add_argument("--loop", action="store_true", help="Reproducir el video en bucle")
+        parser.add_argument("--config", action="store_true", help="Configurar opciones del programa")
+        parser.add_argument("--history", action="store_true", help="Mostrar historial de reproducción")
+        args = parser.parse_args()
+
+        if args.config:
+            print(f"{Fore.YELLOW}Configuración actual:{Style.RESET_ALL}")
+            for key, value in config['DEFAULT'].items():
+                print(f"{key} = {value}")
+            print("\nPara cambiar una opción, usa: key=value")
+            print("Ejemplo: default_limit=10")
+            print("Escribe 'done' cuando hayas terminado.")
+            
+            while True:
+                user_input = input("> ")
+                if user_input.lower() == 'done':
+                    break
+                try:
+                    key, value = user_input.split('=')
+                    config['DEFAULT'][key.strip()] = value.strip()
+                except ValueError:
+                    print(f"{Fore.RED}Formato inválido. Usa key=value{Style.RESET_ALL}")
+            
+            save_config(config)
+            print(f"{Fore.GREEN}Configuración guardada.{Style.RESET_ALL}")
+            return
+
+        if args.history:
+            history = load_history()
+            print(f"{Fore.YELLOW}Historial de reproducción:{Style.RESET_ALL}")
+            for i, entry in enumerate(history, 1):
+                print(f"{i}. {entry['title']} (ID: {entry['id']})")
+            return
+
+        cache = load_cache()
+
+        while True:
+            if args.query:
+                query = ' '.join(args.query)
+            else:
+                query = input(f"{Fore.YELLOW}Ingresa tu búsqueda (o 'q' para salir): {Style.RESET_ALL}")
+            
+            if query.lower() == 'q':
+                break
+
+            if query in cache:
+                print(f"{Fore.CYAN}Usando resultados en caché{Style.RESET_ALL}")
+                results = cache[query]
+            else:
+                results = search_videos(query, args.limit)
+                add_to_cache(query, results)
+
+            display_results(results)
+
+            playlist = []
+            while True:
+                choice = input(f"{Fore.YELLOW}Selecciona un video (1-{args.limit}), 'n' para nueva búsqueda, o 'q' para salir: {Style.RESET_ALL}")
+                if choice.lower() == 'n':
+                    break
+                if choice.lower() == 'q':
+                    return
+                try:
+                    index = int(choice) - 1
+                    if 0 <= index < len(results):
+                        video_id = results[index]['id']
+                        video_title = results[index]['title']
+                        if args.playlist:
+                            playlist.append((video_id, video_title))
+                            print(f"{Fore.GREEN}Video añadido a la playlist{Style.RESET_ALL}")
+                        elif args.download:
+                            download_audio(video_id)
+                        else:
+                            print(f"{Fore.GREEN}Reproduciendo video: {video_title}{Style.RESET_ALL}")
+                            success = play_video(video_id, config)
+                            if success:
+                                add_to_history(video_id, video_title)
+                                rating = input(f"{Fore.YELLOW}Califica el video (1-5 estrellas): {Style.RESET_ALL}")
+                                if rating.isdigit() and 1 <= int(rating) <= 5:
+                                    rate_video(video_id, int(rating))
+                            if args.loop:
+                                while play_video(video_id, config):
+                                    pass
+                            if args.random:
+                                related_videos = get_related_videos(video_id)
+                                random_video = random.choice(related_videos)
+                                print(f"{Fore.YELLOW}Reproduciendo video relacionado aleatorio: {random_video['title']}{Style.RESET_ALL}")
+                                play_video(random_video['id'], config)
+                    else:
+                        print(f"{Fore.RED}Selección inválida. Por favor, elige un número entre 1 y {args.limit}.{Style.RESET_ALL}")
+                except ValueError:
+                    print(f"{Fore.RED}Entrada inválida. Por favor, introduce un número o 'n' para nueva búsqueda.{Style.RESET_ALL}")
+
+            if args.playlist and playlist:
+                print(f"{Fore.CYAN}Reproduciendo playlist:{Style.RESET_ALL}")
+                for video_id, video_title in playlist:
+                    print(f"{Fore.GREEN}Reproduciendo: {video_title}{Style.RESET_ALL}")
+                    play_video(video_id, config)
+
+            args.query = []
+
+    except Exception as e:
+        print(f"{Fore.RED}Error inesperado: {e}{Style.RESET_ALL}")
+        import traceback
+        traceback.print_exc()
+
+if __name__ == "__main__":
+    main()

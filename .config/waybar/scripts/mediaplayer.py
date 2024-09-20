@@ -1,36 +1,49 @@
 #!/usr/bin/env python3
 
-import sys
 import json
 import subprocess
+import sys
+
 
 def get_player_status(player):
-    result = subprocess.run(["playerctl", "--player", player, "status"], capture_output=True, text=True)
+    result = subprocess.run(
+        ["playerctl", "--player", player, "status"], capture_output=True, text=True
+    )
     if result.returncode != 0:
         print("Error getting player status", file=sys.stderr)
         return None
     return result.stdout.strip()
 
-def get_player_metadata(player):
-    result = subprocess.run(["playerctl", "--player", player, "metadata", "--format", "{{title}} - {{artist}}"], capture_output=True, text=True)
+
+def get_song_title(player):
+    result = subprocess.run(
+        ["playerctl", "--player", player, "metadata", "--format", "{{title}}"],
+        capture_output=True,
+        text=True,
+    )
     if result.returncode != 0:
-        print("Error getting player metadata", file=sys.stderr)
+        print("Error getting song title", file=sys.stderr)
         return None
     return result.stdout.strip()
+
 
 def main():
     player = sys.argv[1] if len(sys.argv) > 1 else "spotify"
     status = get_player_status(player)
     if status is None:
-        print("{}")
+        print(json.dumps({"text": ""}))
         return
 
-    metadata = get_player_metadata(player)
+    title = get_song_title(player)
     output = {
-        "status": status,
-        "metadata": metadata if metadata else "No metadata available"
+        "text": title if title else "No title available",
+        "tooltip": (
+            f"Status: {status}\nTitle: {title}" if title else "No title available"
+        ),
+        "class": status.lower(),
     }
     print(json.dumps(output))
+
 
 if __name__ == "__main__":
     main()

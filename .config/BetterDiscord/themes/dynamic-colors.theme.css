@@ -1,0 +1,61 @@
+/**
+ * @name Dynamic Colors
+ * @description Cambia los colores de Discord basándose en el fondo de pantalla
+ * @version 1.0
+ * @author H3nr1d3v
+ */
+
+:root {
+  --brand-experiment: #4c2323;
+  --background-primary: #0b0505;
+  --background-secondary: #090404;
+  --background-secondary-alt: #070303;
+  --background-tertiary: #060303;
+  --background-accent: #4c2323;
+  --background-floating: #060202;
+  --background-mobile-primary: var(--background-primary);
+  --background-mobile-secondary: var(--background-secondary);
+  
+  --text-normal: #b3dcdc;
+  --text-muted: #748f8f;
+  --header-primary: var(--text-normal);
+  --header-secondary: var(--text-muted);
+  --text-link: #401d23;
+  
+  --channeltextarea-background: var(--background-secondary);
+  --input-background: var(--background-secondary);
+  
+  --interactive-normal: #8fb0b0;
+  --interactive-hover: #b3dcdc;
+  --interactive-active: var(--text-normal);
+  --interactive-muted: #475858;
+  
+  --background-modifier-hover: rgba(76, 35, 35, 0.05);
+  --background-modifier-active: rgba(76, 35, 35, 0.1);
+  --background-modifier-selected: rgba(76, 35, 35, 0.15);
+  --background-modifier-accent: rgba(76, 35, 35, 0.2);
+  
+  --scrollbar-thin-thumb: rgba(76, 35, 35, 0.3);
+  --scrollbar-auto-thumb: rgba(76, 35, 35, 0.4);
+  --scrollbar-auto-track: rgba(76, 35, 35, 0.1);
+}
+
+.theme-dark, .theme-light {
+  --header-primary: var(--text-normal);
+  --header-secondary: var(--text-muted);
+  --background-primary: var(--background-primary);
+  --background-secondary: var(--background-secondary);
+  --background-secondary-alt: var(--background-secondary-alt);
+  --background-tertiary: var(--background-tertiary);
+  --background-accent: var(--background-accent);
+  --background-floating: var(--background-floating);
+  --text-normal: var(--text-normal);
+  --text-muted: var(--text-muted);
+  --interactive-normal: var(--interactive-normal);
+  --interactive-hover: var(--interactive-hover);
+  --interactive-active: var(--interactive-active);
+  --interactive-muted: var(--interactive-muted);
+}
+
+/* Agrega aquí más reglas CSS personalizadas según sea necesario */
+

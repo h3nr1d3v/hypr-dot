@@ -47,3 +47,19 @@ swww img "$wallpaper" && echo "$wallpaper" > "$CURRENT_WALLPAPER"
 
 # Recarga Hyper
 hyprctl reload
+
+# Recarga Firefox
+pkill -f firefox && firefox &
+
+# Recargar colores en Neovim si está en ejecución
+nvim --server /tmp/nvim.pipe --remote-send ":lua require('catppuccin').load()<CR>"
+
+#Recargar colores en Ranger
+~/.config/ranger/reload.sh
+
+#Recargar los colores de pipes.sh
+~/.config/pipes/generate_config.sh
+
+
+# Actualiza la configuración de cmatrix
+~/.config/cmatrix/dynamic_cmatrix.sh
