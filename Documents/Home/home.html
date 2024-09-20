@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="firefox-colors.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="loading-screen" id="loading-screen">
+        <div class="loader"></div>
+    </div>
+    <div class="top-container">
+        <div class="left-container">
+            <div class="star-container">
+                <img src="/home/h3nr1/Pictures/pink.png" alt="Anime Image" class="anime-image">
+                <div class="star star1"></div>
+                <div class="star star2"></div>
+                <div class="star star3"></div>
+                <div class="star star4"></div>
+                <div class="star star5"></div>
+                <div class="star star6"></div>
+                <div class="star star7"></div>
+                <div class="star star8"></div>
+                <div class="star star9"></div>
+                <div class="star star10"></div>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="shortcuts">
+                <h2>Estudio</h2>
+                <a href="https://www.google.com" class="shortcut"><i class="fas fa-search"></i> Google</a>
+                <a href="https://www.github.com" class="shortcut"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://mail.google.com" class="shortcut"><i class="fas fa-envelope"></i> Gmail</a>
+                <h2>IA</h2>
+                <a href="https://chat.openai.com" class="shortcut"><i class="fas fa-robot"></i> ChatGPT</a>
+                <a href="https://www.phind.com" class="shortcut"><i class="fas fa-brain"></i> Phind</a>
+                <a href="https://gemini.google.com/?hl=en" class="shortcut"><i class="fas fa-gem"></i> Gemini</a>
+                <h2>Multimedia</h2>
+                <a href="https://www.youtube.com" class="shortcut"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://web.whatsapp.com" class="shortcut"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://www.spotify.com" class="shortcut"><i class="fab fa-spotify"></i> Spotify</a>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-container">
+        <div class="search-box">
+            <form action="https://duckduckgo.com/" method="get">
+                <i class="fa fa-search search-icon"></i>
+                <input type="text" id="search-input" name="q" placeholder=" Search Here">
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("loading-screen").style.display = 'none';
+            document.getElementById("search-input") .focus();
+        });
+    </script>
+    <script>
+        // Add 'loaded' class to images after they've finished loading
+        document.addEventListener('DOMContentLoaded', function () {
+            var images = document.querySelectorAll('img');
+            images.forEach(function (img) {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', function () {
+                        this.classList.add('loaded');
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        // Función para recargar el archivo CSS
+        function reloadCSS() {
+            const links = document.getElementsByTagName("link");
+            for (let i = 0; i < links.length; i++) {
+                if (links[i].getAttribute("href").includes("firefox-colors.css")) {
+                    const href = links[i].getAttribute("href").split("?")[0];
+                    links[i].setAttribute("href", href + "?v=" + new Date().getTime());
+                    break;
+                }
+            }
+        }
+
+        // Recargar el CSS cada 5 segundos (ajusta según tus necesidades)
+        setInterval(reloadCSS, 5000);
+    </script>
+</body>
+
+</html>
