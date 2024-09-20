@@ -15,18 +15,20 @@ Welcome to my personal Arch Linux configuration featuring Hyprland! This reposit
 
 ## Preview
 
-![Screenshot](https://github.com/user-attachments/assets/6596d915-5a5d-44b4-953c-1de6ffec7215)
-![Screenshot1](https://github.com/user-attachments/assets/6977c7bf-326f-4f02-9603-5a1cbd551cac)
-![Screenshot2](https://github.com/user-attachments/assets/3879c72e-e97f-42fd-a9e6-a04394726c03)
-![Screenshot3](https://github.com/user-attachments/assets/800bd5b3-486e-43c2-afbf-cea78e1cff60)
-![Screenshot4](https://github.com/user-attachments/assets/59a7c441-91a9-4678-8e6d-959771bb21ed)
-![Screenshot5](https://github.com/user-attachments/assets/6202fe7f-785e-4dd1-ac7b-93c9d010c6fc)
-![Screenshot6](https://github.com/user-attachments/assets/d275d0ad-2e5a-4596-a194-e05dbd900867)
-![Screenshot7](https://github.com/user-attachments/assets/88fdf57d-cd98-4422-addb-1de3230da852)
-![Screenshot8](https://github.com/user-attachments/assets/11ab1007-a8bf-4944-8bdd-017a649fe2ef)
-![Screenshot9](https://github.com/user-attachments/assets/a3d59ff6-809f-45d1-83e0-4d0e4344e052)
+![Wallpaper](https://github.com/user-attachments/assets/49ea4250-3362-4861-858a-1d6b3ddaa7ef)
+![Wallpaper1](https://github.com/user-attachments/assets/cbe62959-4e16-409e-acc0-9b4c13488e6d)
+![Wallpaper2](https://github.com/user-attachments/assets/afca1b7b-1fe7-4c98-9f3f-6c156641d49b)
+![Wallpaper3](https://github.com/user-attachments/assets/dde8dc83-d8d7-400c-9b51-667d58df155b)
+![Wallpaper4](https://github.com/user-attachments/assets/2ff1bfb0-70aa-4614-8d22-235c0c2a7b0a)
+![Wallpaper5](https://github.com/user-attachments/assets/7c389659-5246-46d1-8116-c02170458980)
+![Wallpaper6](https://github.com/user-attachments/assets/7f6938e3-6a6d-4ea2-8995-7c677d5d1324)
+![Wallpaper7](https://github.com/user-attachments/assets/6e21f96c-7079-45f3-8c2f-7ef36813819c)
+![Wallpaper8](https://github.com/user-attachments/assets/fd7662b4-f426-47ac-99c4-8b89b33521d6)
+![Wallpaper9](https://github.com/user-attachments/assets/f243965f-86f0-4c8f-9ed5-c100a7c5ab89)
+![Wallpaper10](https://github.com/user-attachments/assets/cec4a850-555b-48ae-997e-4de06e1ae4df)
+![Wallpaper11](https://github.com/user-attachments/assets/d9ea40d3-0dea-4adc-9767-836505c2c693)
+![Wallpaper12](https://github.com/user-attachments/assets/367f4db7-9a0e-4280-91f7-1c743513c902)
 
-## Installation
 
 1. Clone this repository:
 
