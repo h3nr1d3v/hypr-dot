@@ -1,0 +1,109 @@
+*,
+*::before,
+*::after {
+    font-family: JetBrainsMono Nerd Font, JetBrains Mono, monospace, monospace;
+}
+
+#alltabs-button,
+.titlebar-buttonbox-container,
+#page-action-buttons,
+#tracking-protection-icon-container,
+#identity-box {
+    display: none;
+}
+
+
+/* remove window control buttons */
+.titlebar-buttonbox-container {
+    display: none !important;
+}
+
+#PanelUI-menu-button {
+    padding: 0px !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-icon {
+    width: 1px !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-badge-stack {
+    padding: 0px !important;
+}   
+
+
+#pageActionButton {
+    display: none !important;
+}
+
+/* Disable the Navigation Buttons */
+#back-button,
+#forward-button {
+    display: none !important;
+}
+
+/* Disables the Tracking Protection Shield */
+#tracking-protection-icon-container { display: none !important; } */
+
+/* Encryption and Permissions icons */
+/* Only hides permission items */
+#identity-permission-box {
+    display: none !important;
+}
+
+/* Hides encryption AND permission items */
+/* #identity-box { display: none !important } */
+
+/* Hide everything BUT the zoom indicator within the URL Bar */
+#page-action-buttons > :not(#urlbar-zoom-button) { display: none !important; } */
+
+/* Hide the »Go«-arrow in the URL Bar */
+#urlbar-go-button {
+    display: none !important;
+}
+
+/* Hides the Extensions Menu Icon */
+#unified-extensions-button {
+    display: none !important;
+}
+
+:root {
+
+    /*  Allow tabs to have dynamic widths based on
+   *  the Tab Bars maximum width
+   */
+    --uc-active-tab-width: clamp(100px, 30vw, 300px);
+    --uc-inactive-tab-width: clamp(100px, 20vw, 200px);
+
+
+    /*  Enable this to always show the Tab Close button
+   *  possible values:
+   *  show: -moz-inline-block
+   *  hide: none
+   */
+    --show-tab-close-button: none;
+
+    /*  Enable this to only show the Tab Close button on tab hover
+   *  possible values:
+   *  show: -moz-inline-block
+   *  hide: none
+   */
+    --show-tab-close-button-hover: none;
+
+    /*  Hide the all Tabs button from the Tab Bar
+   *  possible values:
+   *  show: -moz-box
+   *  hide: none
+   */
+    --uc-show-all-tabs-button: none;
+
+    --uc-window-controls-display: none;
+
+/* Ocultar el menú de aplicaciones en Firefox */
+
+    #PanelUI-menu-button {
+        display: none !important;
+    }
+
+    #appMenu-fxa-container {
+        display: none !important;
+    }
