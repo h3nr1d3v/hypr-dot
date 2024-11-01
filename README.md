@@ -157,8 +157,6 @@ We welcome contributions! Please check our:
 
 - [Contributing Guidelines](CONTRIBUTING.md) for code contributions
 - [Issue Tracker](https://github.com/h3nr1d3v/hypr-dot/issues) for bug reports and feature requests
-- [Discussions](https://github.com/h3nr1d3v/hypr-dot/discussions) for questions and ideas
-
 
 ## 📄 License
 
