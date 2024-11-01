@@ -1,0 +1,111 @@
+{
+    "$schema": "/etc/xdg/swaync/configSchema.json",
+    "positionX": "right",
+    "positionY": "top",
+    "control-center-margin-top": 10,
+    "control-center-margin-bottom": 10,
+    "control-center-margin-right": 10,
+    "control-center-margin-left": 10,
+    "notification-icon-size": 64,
+    "notification-body-image-height": 100,
+    "notification-body-image-width": 200,
+    "timeout": 5,
+    "timeout-low": 5,
+    "timeout-critical": 10,
+    "fit-to-screen": true,
+    "control-center-width": 400,
+    "notification-window-width": 400,
+    "keyboard-shortcuts": true,
+    "image-visibility": "when-available",
+    "transition-time": 200,
+    "hide-on-clear": false,
+    "hide-on-action": true,
+    "script-fail-notify": true,
+    "scripts": {
+        "example-script": {
+            "exec": "echo 'example'",
+            "urgency": "Normal"
+        }
+    },
+    "notification-visibility": {
+        "spotify": {
+            "state": "enabled",
+            "urgency": "Normal",
+            "app-name": "Spotify"
+        }
+    },
+    "widgets": [
+        "title",
+        "dnd",
+        "notifications",
+        "backlight",
+        "volume",
+        "mpris",
+        "buttons-grid",
+        "calendar"
+    ],
+    "widget-config": {
+        "title": {
+            "text": "󰂚  :: Notifications",
+            "clear-all-button": true,
+            "button-text": "󰎟 "
+        },
+        "dnd": {
+            "text": "Do Not Disturb"
+        },
+        "label": {
+            "max-lines": 1,
+            "text": "Notification Center"
+        },
+        "mpris": {
+            "image-size": 96,
+            "image-radius": 12
+        },
+        "volume": {
+            "label": "󰕾 "
+        },
+        "backlight": {
+            "label": "󰃟 "
+        },
+        "buttons-grid": {
+            "actions": [
+                {
+                    "label": "󰔏",
+                    "command": "hyprshade toggle redshift"
+                },
+                {
+                    "label": "󰌵",
+                    "command": "hyprshade toggle dim"
+                },
+                {
+                    "label": "󰊠",
+                    "command": "hyprshade toggle grayscale"
+                },
+                {
+                    "label": "󰏘",
+                    "command": "hyprshade toggle vibrance"
+                },
+                {
+                    "label": "󰌁",
+                    "command": "hyprshade toggle invert"
+                },
+                {
+                    "label": "󰐥",
+                    "command": "systemctl suspend"
+                },
+                {
+                    "label": "󰍃",
+                    "command": "hyprctl dispatch dpms off"
+                },
+                {
+                    "label": "󰒲",
+                    "command": "systemctl reboot"
+                }
+            ]
+        },
+        "calendar": {
+            "format": "%A, %d %B",
+            "weeks-start-sunday": true
+        }
+    }
+}

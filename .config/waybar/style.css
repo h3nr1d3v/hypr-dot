@@ -3,99 +3,53 @@
 * {
     border: none;
     border-radius: 0px;
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "Noto Sans CJK JP", "JetBrainsMono Nerd Font";
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     min-height: 10px;
     color: @main-fg;
 }
 
 window#waybar {
-    background: transparent;
+    background: rgba(0, 0, 0, 0.8);
     color: @main-fg;
 }
 
 tooltip {
     background: @main-bg;
     color: @main-fg;
-    border-radius: 7px;
-    border-width: 0px;
+    border-radius: 15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: @main-fg;
 }
 
 #workspaces button {
-    box-shadow: none;
-    text-shadow: none;
     padding: 0px;
-    border-radius: 9px;
+    border-radius: 15px;
     margin-top: 3px;
     margin-bottom: 3px;
-    margin-left: 0px;
     padding-left: 3px;
     padding-right: 3px;
-    margin-right: 0px;
+    margin-right: 3px;
     background: @main-bg;
     color: @main-fg;
-    animation: ws_normal 20s ease-in-out 1;
+    animation: ws_normal 0.5s ease-in-out;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #workspaces button.active {
     background: @wb-act-bg;
     color: @wb-act-fg;
-    margin-left: 3px;
     padding-left: 12px;
     padding-right: 12px;
-    margin-right: 3px;
-    animation: ws_active 20s ease-in-out 1;
-    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+    animation: ws_active 0.5s ease-in-out;
 }
 
 #workspaces button:hover {
     background: @wb-hvr-bg;
     color: @wb-hvr-fg;
-    animation: ws_hover 20s ease-in-out 1;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
-}
-
-#taskbar button {
-    box-shadow: none;
-    text-shadow: none;
-    padding: 0px;
-    border-radius: 9px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin-right: 0px;
-    background: @main-bg;
-    color: @main-fg;
-    animation: tb_normal 20s ease-in-out 1;
-}
-
-#taskbar button.active {
-    background: @wb-act-bg;
-    color: @wb-act-fg;
-    margin-left: 3px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-right: 3px;
-    animation: tb_active 20s ease-in-out 1;
-    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
-}
-
-#taskbar button:hover {
-    background: @wb-hvr-bg;
-    color: @wb-hvr-fg;
-    animation: tb_hover 20s ease-in-out 1;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
-}
-
-#tray menu * {
-    min-height: 16px;
-}
-
-#tray menu separator {
-    min-height: 10px;
+    animation: ws_hover 0.3s ease-in-out;
 }
 
 #backlight,
@@ -124,66 +78,68 @@ tooltip {
 #custom-wbar,
 #window,
 #workspaces,
-#custom-text,
+#custom-text {
+    background: @main-bg;
+    color: @main-fg;
+    opacity: 0.8;
+    margin: 4px 2px;
+    padding: 2px 10px;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
 #custom-l_end,
 #custom-r_end,
 #custom-sl_end,
 #custom-sr_end,
 #custom-rl_end,
 #custom-rr_end {
-    background: @main-bg;
-    color: @main-fg;
-    opacity: 1;
-    margin: 4px 0px 4px 0px;
-    padding-left: 4px;
-    padding-right: 4px;
+    background: transparent;
 }
 
-#backlight:hover,
-#network:hover,
-#pulseaudio:hover,
-#battery:hover {
-    background: @wb-hvr-bg;
-    color: @wb-hvr-fg;
+#custom-power,
+#custom-notifications,
+#custom-keybindhint {
+    font-size: 16px;
+}
+
+#clock {
+    font-size: 14px;
+    font-weight: 600;
 }
 
 #workspaces,
 #taskbar {
-    padding: 0px;
+    background: transparent;
 }
 
-#custom-r_end {
-    border-radius: 0px 21px 21px 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+#custom-spotify {
+    color: #1DB954;
 }
 
-#custom-l_end {
-    border-radius: 21px 0px 0px 21px;
-    margin-left: 9px;
-    padding-left: 3px;
+#battery.warning {
+    color: #ffbe61;
 }
 
-#custom-sr_end {
-    border-radius: 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+#battery.critical {
+    color: #ff5555;
 }
 
-#custom-sl_end {
-    border-radius: 0px;
-    margin-left: 9px;
-    padding-left: 3px;
+@keyframes blink {
+    to {
+        background-color: @main-fg;
+        color: @main-bg;
+    }
 }
 
-#custom-rr_end {
-    border-radius: 0px 7px 7px 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+#battery.critical.discharging {
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
-#custom-rl_end {
-    border-radius: 7px 0px 0px 7px;
-    margin-left: 9px;
-    padding-left: 3px;
-}
+/* Puedes darme una animacion diferente para cuando spotify este reproduciendo musica? Algo estilo una onda musical */
+
+

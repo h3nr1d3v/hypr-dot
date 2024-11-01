@@ -1,13 +1,13 @@
 @import "colors.rasi"
 
 configuration {
-    display-drun: "󱓞 Applications";
+    display-drun: "󱓞 アプリケーション";
     show-icons: true;
-    icon-theme: "Stylish";
+    icon-theme: "WhiteSur-pink";
 }
 
 * {
-    font: "JetBrainsMono Nerd Font Mono 10";
+    font: "Noto Sans CJK JP 12";
     background-color: transparent;
     text-color: @fg0;
     margin: 0;

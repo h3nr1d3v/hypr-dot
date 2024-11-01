@@ -1,0 +1,106 @@
+# Configuración general
+ignore-empty-password
+disable-caps-lock-text
+show-failed-attempts
+daemonize
+
+# Fuente y tamaño
+font=Noto Sans CJK JP
+font-size=50
+
+# Imagen de fondo
+#image=/home/h3nr1d3v/Pictures/Wallpapers/imagen_061.png
+scaling=fill
+
+# Colores
+key-hl-color=f5a9b8ff
+separator-color=00000000
+inside-color=00000099
+inside-clear-color=ffd20400
+inside-caps-lock-color=009ddc00
+inside-ver-color=d9d8d800
+inside-wrong-color=ee2e2400
+ring-color=231f20D9
+ring-clear-color=231f20D9
+ring-caps-lock-color=231f20D9
+ring-ver-color=231f20D9
+ring-wrong-color=231f20D9
+line-color=00000000
+line-clear-color=ffd204FF
+line-caps-lock-color=009ddcFF
+line-ver-color=d9d8d8FF
+line-wrong-color=ee2e24FF
+text-color=f5a9b8ff
+text-clear-color=ffd20400
+text-ver-color=d9d8d800
+text-wrong-color=ee2e2400
+
+# Efectos
+fade-in=0.5
+grace=2
+grace-no-mouse
+grace-no-touch
+
+# Indicador
+indicator-radius=150
+indicator-thickness=15
+indicator-caps-lock
+
+# Reloj y fecha
+clock
+timestr=%H:%M
+datestr=%Y年%m月%d日
+time-color=f5a9b8ff
+date-color=d9d8d8ff
+layout-bg-color=00000000
+layout-text-color=f5a9b8ff
+
+# Texto personalizado
+text-caps-lock-color=009ddc
+caps-lock-key-hl-color=009ddc
+bs-hl-color=ee2e24
+caps-lock-bs-hl-color=ee2e24
+text-ver-color=d9d8d8
+text-wrong-color=ee2e24
+
+# Animaciones y elementos adicionales
+indicator-idle-visible
+indicator-radius-idle=150
+indicator-thickness-idle=15
+
+# Texto personalizado
+text="ようこそ"
+text-color=f5a9b8ff
+text-ver-color=d9d8d8ff
+text-wrong-color=ee2e24ff
+text-size=24
+
+# Posicionamiento del reloj y texto
+clock-pos=ix:iy-60
+date-pos=ix:iy-30
+text-pos=ix:iy+30
+
+# Efectos adicionales
+key-hl-color=f5a9b8ff
+caps-lock-key-hl-color=009ddcff
+caps-lock-bs-hl-color=ee2e24ff
+text-caps-lock-color=009ddcff
+
+# Efectos de texto y teclas
+text-clear-color=ffd20400
+text-ver-color=d9d8d800
+text-wrong-color=ee2e2400
+text-size=24
+text="ようこそ"
+text-color=f5a9b8ff
+text-ver-color=d9d8d8ff 
+text-wrong-color=ee2e24ff 
+text-pos=ix:iy+30 
+text-caps-lock-color=009ddcff 
+text-caps-lock-size=24 
+text-caps-lock="Caps Lock" 
+text-caps-lock-pos=ix:iy+30 
+text-caps-lock-color=009ddcff 
+text-cap-lock-size=24
+
+

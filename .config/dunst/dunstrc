@@ -95,7 +95,7 @@
     frame_width = 3
 
     # Defines color of the frame around the notification window.
-    #frame_color = "#eba0ac"
+    #frame_color = "#000000"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
@@ -309,35 +309,23 @@
     # where there are multiple screens with very different dpi values.
     per_monitor_dpi = false
 
-
 [urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#1e1e3e99"
-    foreground = "#ffffff"
-    frame_color = "#da025d"
-    icon = "~/.config/dunst/icons/low.svg"
-    timeout = 10
-    # Icon for notifications with low urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    background = "#730f2099"
+    foreground = "#8cf0df"
+    frame_color = "#000000"
+    script = /home/h3nr1d3v/play_sound.sh /home/h3nr1d3v/Music/sounds/lock.wav
 
 [urgency_normal]
-    background = "#1e1e3e99"
-    foreground = "#ffffff"
-    frame_color = "#da025d"
-    icon = "~/.config/dunst/icons/normal.svg"
-    timeout = 10
-    # Icon for notifications with normal urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    background = "#730f2099"
+    foreground = "#8cf0df"
+    frame_color = "#000000"
+    script = /home/h3nr1d3v/play_sound.sh /home/h3nr1d3v/Music/sounds/wrong.wav
 
 [urgency_critical]
-    background = "#1e1e3e99"
-    foreground = "#ffffff"
-    frame_color = "#da025d"
-    icon = "~/.config/dunst/icons/critical.svg"
-    timeout = 0
-    # Icon for notifications with critical urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    background = "#730f2099"
+    foreground = "#8cf0df"
+    frame_color = "#000000"
+    script = /home/h3nr1d3v/play_sound.sh /home/h3nr1d3v/Music/sounds/unlock.wav
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

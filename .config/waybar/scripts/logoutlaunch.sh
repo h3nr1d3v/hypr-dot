@@ -7,25 +7,27 @@ then
     exit 1
 fi
 
-# Definir las opciones de cierre de sesión
-options="Poweroff\nReboot\nExit"
+# Definir las opciones de cierre de sesión con iconos de Nerd Font
+options=" スリープ\n 再起動\n ログアウト\n シャットダウン"
 
-# Mostrar el menú usando rofi
-selected_option=$(echo -e $options | rofi -dmenu -p "Seleccione una opción:" -theme Rofi)
+# Mostrar el menú usando rofi con tema personalizado
+selected_option=$(echo -e "$options" | rofi -dmenu -p "選択してください:" -theme ~/.config/rofi/power_menu.rasi)
 
 # Ejecutar la acción seleccionada
-case $selected_option in
-    Poweroff)
-        systemctl poweroff
+case "$selected_option" in
+    " スリープ")
+        systemctl suspend
         ;;
-    Reboot)
+    " 再起動")
         systemctl reboot
         ;;
-    Exit)
+    " ログアウト")
         hyprctl dispatch exit
         ;;
+    " シャットダウン")
+        systemctl poweroff
+        ;;
     *)
-        echo "Opción no válida."
+        echo "無効なオプション"
         ;;
 esac
-

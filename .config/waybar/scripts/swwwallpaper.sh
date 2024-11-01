@@ -48,9 +48,6 @@ swww img "$wallpaper" && echo "$wallpaper" > "$CURRENT_WALLPAPER"
 # Recarga Hyper
 hyprctl reload
 
-# Recarga Firefox
-pkill -f firefox && firefox &
-
 # Recargar colores en Neovim si está en ejecución
 nvim --server /tmp/nvim.pipe --remote-send ":lua require('catppuccin').load()<CR>"
 
@@ -63,3 +60,15 @@ nvim --server /tmp/nvim.pipe --remote-send ":lua require('catppuccin').load()<CR
 
 # Actualiza la configuración de cmatrix
 ~/.config/cmatrix/dynamic_cmatrix.sh
+
+# Actualiza los colores de cmus
+~/.config/cmus/update_colors.sh
+
+# Actualiza los colores de waybar
+~/.config/waybar/scripts/update_waybar_colors.sh
+
+# Actualiza los colores de swaync
+~/.config/swaync/update_swaync_colors.sh
+
+# Actualiza los colores de vscode
+~/.config/hypr/scripts/vscode.sh

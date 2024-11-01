@@ -21,9 +21,8 @@ vim.fn.serverstart("/tmp/nvim.pipe")
 local config_path = vim.fn.stdpath('config')
 package.path = package.path .. ';' .. config_path .. '/?.lua'
 
-
 -- Configuración de la fuente
-vim.o.guifont = "FiraCode Nerd Font:h12"
+vim.o.guifont = "Noto Sans CJK JP:h12"
 vim.g.neovide_font_hinting = "full"
 vim.g.neovide_font_antialiasing = "subpixel"
 
@@ -265,11 +264,32 @@ require("catppuccin").setup({
 -- Aplicar el tema
 vim.cmd.colorscheme "catppuccin"
 
--- Configuración de la barra de estado
+-- Personalización adicional para un aspecto más japonés
+local colors = require("catppuccin.palettes").get_palette()
+vim.api.nvim_set_hl(0, "Normal", { bg = colors.base, fg = colors.text })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.mantle })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.blue })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = colors.surface0 })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = colors.lavender, bold = true })
+vim.api.nvim_set_hl(0, "LineNr", { fg = colors.overlay0 })
+vim.api.nvim_set_hl(0, "Pmenu", { bg = colors.surface0 })
+vim.api.nvim_set_hl(0, "PmenuSel", { bg = colors.pink, fg = colors.base })
+
+-- Configuración de lualine para un aspecto más japonés
 require('lualine').setup {
   options = {
-    theme = 'catppuccin'
-  }
+    theme = 'catppuccin',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
 }
 
 -- Configuración del explorador de archivos
@@ -325,6 +345,77 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+-- Configuración de nvim-tree para un aspecto más japonés
+require'nvim-tree'.setup {
+  view = {
+    width = 30,
+    side = 'left',
+  },
+  renderer = {
+    indent_markers = {
+      enable = true,
+      icons = {
+        corner = "└ ",
+        edge = "│ ",
+        none = "  ",
+      },
+    },
+    icons = {
+      webdev_colors = true,
+      git_placement = "before",
+      padding = " ",
+      symlink_arrow = " ➛ ",
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+      glyphs = {
+        default = "",
+        symlink = "",
+        folder = {
+          arrow_closed = "",
+          arrow_open = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = "",
+        },
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "",
+          ignored = "◌",
+        },
+      },
+    },
+  },
+}
+
+-- Configuración de bufferline para un aspecto más japonés
+require("bufferline").setup{
+  options = {
+    separator_style = "slant",
+    indicator = {
+      icon = '▎',
+      style = 'icon',
+    },
+    buffer_close_icon = '',
+    modified_icon = '●',
+    close_icon = '',
+    left_trunc_marker = '',
+    right_trunc_marker = '',
+  }
+}
+
+
+
 -- Configuración de Gitsigns
 require('gitsigns').setup()
 
@@ -377,23 +468,22 @@ dashboard.section.header.val = {
     "    █  ▄▀  █    ▀██▀    ▀▀ ▀▀  ▄▀  ",
     "   █   █  █      ▄▄           ▄▀   ",
 }
+
 dashboard.section.buttons.val = {
-  dashboard.button("e", "  New File", ":enew<CR>"),
-  dashboard.button("f", "  Find File", ":Telescope find_files<CR>"),
-  dashboard.button("g", "  Grep", ":Telescope live_grep<CR>"),
-  dashboard.button("b", "  Buffers", ":Telescope buffers<CR>"),
-  dashboard.button("h", "  Help", ":Telescope help_tags<CR>"),
+    dashboard.button("e", "  新規ファイル", ":enew<CR>"),
+    dashboard.button("f", "  ファイル検索", ":Telescope find_files<CR>"),
+    dashboard.button("g", "  グレップ検索", ":Telescope live_grep<CR>"),
+    dashboard.button("b", "  バッファ一覧", ":Telescope buffers<CR>"),
+    dashboard.button("h", "  ヘルプ", ":Telescope help_tags<CR>"),
 }
 
-
 dashboard.section.footer.val = {
-  "                                                ",
-  "   🌌  Anime + Tech Fusion 🌌                   ",
-  "   💻 Code like a pro with futuristic vibes! 💻 ",
-  "   🌟 Embrace the power of imagination & tech. 🌟",
-  "   🚀 Keep exploring new horizons. 🚀           ",
-  "   🌸 A place where meets innovation. 🌸        ",
-  "                                                ",
+    "                                                ",
+    "   技術と想像力の融合                           ",
+    "   未来を創造するコードの世界へようこそ         ",
+    "   新たな地平線を目指して                       ",
+    "   イノベーションの花が咲く場所                 ",
+    "                                                ",
 }
 
 alpha.setup(dashboard.opts) 

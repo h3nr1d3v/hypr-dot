@@ -1,11 +1,13 @@
 :root {
     /* Estas variables serán sobrescritas por firefox-colors.css */
-    --bg-color: hsla(303, 100%, 83%, 0.05);
-    --fg-color: rgba(124, 82, 187, 0.034);
-    --accent-color: rgba(100, 49, 175, 1);
-    --hover-color: rgba(218, 2, 253, 0.05);
-    --border-color: #f5bde6;
-    --star-color: #f5bde6;
+    --bg-color: rgba(0, 0, 0, 0.05);
+    --fg-color: rgba(255, 255, 255, 1);
+    --accent-color: rgba(100, 100, 100, 1);
+    --hover-color: rgba(0, 0, 0, 0.1);
+    --border-color: rgba(0, 0, 0, 0.3);
+    --star-color: rgba(255, 255, 255, 0.5);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --glow-color: rgba(255, 255, 255, 0.5);
 }
 
 body {
@@ -135,8 +137,6 @@ html {
         transform: scale(1.2);
     }
 }
-
-/* Star classes remain unchanged */
 
 @keyframes starAnimation {
     0%, 100% {

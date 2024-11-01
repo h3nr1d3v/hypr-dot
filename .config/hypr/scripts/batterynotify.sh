@@ -16,20 +16,35 @@ is_laptop() {
 }
 
 if is_laptop; then
+    # Initialize variables to track last notified state
+    last_low_notified=0
+    last_charged_notified=0
 
-while true; do
-    battery_status=$(cat /sys/class/power_supply/BAT0/status)
-    battery_percentage=$(cat /sys/class/power_supply/BAT0/capacity)
+    while true; do
+        battery_status=$(cat /sys/class/power_supply/BAT0/status)
+        battery_percentage=$(cat /sys/class/power_supply/BAT0/capacity)
 
-    if [ "$battery_status" == "Discharging" ] && [ "$battery_percentage" -le 20 ]; then
-        dunstify -u CRITICAL "Battery Low" "Battery is at $battery_percentage%. Connect the charger."
-    fi
+        if [ "$battery_status" == "Discharging" ] && [ "$battery_percentage" -le 20 ] && [ "$last_low_notified" -eq 0 ]; then
+            dunstify -u CRITICAL "Battery Low" "Battery is at $battery_percentage%. Connect the charger."
+            last_low_notified=1
+            last_charged_notified=0
+        fi
 
-    if [ "$battery_status" == "Charging" ] && [ "$battery_percentage" -ge 80 ]; then
-        dunstify -u NORMAL "Battery Charged" "Battery is at $battery_percentage%. You can unplug the charger."
-    fi
+        if [ "$battery_status" == "Charging" ] && [ "$battery_percentage" -ge 80 ] && [ "$last_charged_notified" -eq 0 ]; then
+            dunstify -u NORMAL "Battery Charged" "Battery is at $battery_percentage%. You can unplug the charger."
+            last_charged_notified=1
+            last_low_notified=0
+        fi
 
-    sleep 300  # Sleep for 5 minutes before checking again
-  done
+        # Reset notifications if battery status changes
+        if [ "$battery_status" == "Charging" ] && [ "$battery_percentage" -gt 20 ]; then
+            last_low_notified=0
+        fi
 
+        if [ "$battery_status" == "Discharging" ] && [ "$battery_percentage" -lt 80 ]; then
+            last_charged_notified=0
+        fi
+
+        sleep 300  # Sleep for 5 minutes before checking again
+    done
 fi

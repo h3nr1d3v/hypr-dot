@@ -1,0 +1,40 @@
+# Atajos de teclado personalizados para cmus
+
+# Navegación
+bind -f common h seek -5
+bind -f common l seek +5
+bind -f common j win-down
+bind -f common k win-up
+bind -f common g win-top
+bind -f common G win-bottom
+
+# Reproducción
+bind -f common space player-pause
+bind -f common n player-next
+bind -f common p player-prev
+bind -f common r player-repeat
+bind -f common z player-prev-album
+bind -f common x player-next-album
+bind -f common v player-stop
+bind -f common c player-pause
+
+# Volumen
+bind -f common - vol -10%
+bind -f common = vol +10%
+
+# Vistas
+bind -f common 1 view tree
+bind -f common 2 view sorted
+bind -f common 3 view playlist
+bind -f common 4 view queue
+bind -f common 5 view browser
+bind -f common 6 view filters
+bind -f common 7 view settings
+
+# Otros
+bind -f common / search-start
+bind -f common ? search-b-start
+bind -f common q quit -i
+
+# Agregar música
+bind -f browser y win-add

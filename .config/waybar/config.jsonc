@@ -1,7 +1,4 @@
-// Description: Configuration file for Waybar
 {
-// sourced from header module //
-
     "layer": "top",
     "position": "top",
     "mod": "dock",
@@ -12,124 +9,83 @@
     "reload_style_on_change": true,
     "style": "~/.config/waybar/style.css",
 
-// positions generated based on config.ctl //
-
-	"modules-left": ["custom/padd","custom/l_end","custom/power","custom/r_end","custom/l_end","custom/wallchange","custom/r_end","custom/l_end","custom/spotify","custom/r_end","custom/padd"],
-	"modules-center": ["custom/padd","custom/l_end","hyprland/workspaces","custom/r_end","custom/padd"],
-	"modules-right": ["custom/padd","custom/l_end","battery","pulseaudio","backlight","network","bluetooth","custom/idle_inhibitor","clock","custom/notifications","custom/r_end","custom/padd"],
-
+    "modules-left": ["custom/padd","custom/l_end","custom/power","custom/r_end","custom/l_end","custom/wallchange","custom/cliphist","custom/r_end","custom/l_end","custom/spotify","custom/r_end","custom/padd"],
+    "modules-center": ["custom/padd","custom/l_end","hyprland/workspaces","custom/r_end","custom/padd"],
+    "modules-right": ["custom/padd","custom/l_end","battery","pulseaudio","backlight","network","bluetooth","custom/idle_inhibitor","clock","custom/notifications","custom/r_end","custom/padd"],
 
     "custom/power": {
-        "format": "{}",
-        "rotate": 0,
-        "exec": "echo ; echo  logout",
+        "format": "電源 ⏻ {}",
+        "exec": "echo ; echo 終了",
         "on-click": "~/.config/waybar/scripts/logoutlaunch.sh 2",
         "on-click-right": "~/.config/waybar/scripts/logoutlaunch.sh 1",
-        "interval" : 86400, // once every day
+        "interval": 86400,
         "tooltip": true
     },
-    
-    "hyprland/workspaces": {
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-            "default": "󰝦",
-            "active": "󰮯",
-            "urgent": "󰊠"
-        },
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": []
+
+   "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+        "1": "一",
+        "2": "二",
+        "3": "三",
+        "4": "四",
+        "5": "五",
+        "6": "六",
+        "7": "七",
+        "8": "八",
+        "9": "九",
+        "urgent": "三"
+    },
+    "persistent_workspaces": {
+        "1": [], "2": [], "3": [], "4": [], "5": [],
+        "6": [], "7": [], "8": [], "9": []
         }
     },
-
+ 
     "custom/cliphist": {
-        "format": "{}",
-        "rotate": 0,
-        "on-click": "~/.config/waybar/scripts/clipboard.sh",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
-    "custom/wbar": {
-        "format": "{}", //    //
-        "rotate": 0,
-        "exec": "echo ; echo  switch bar //  dock",
-        "on-click": "~/.config/waybar/scripts/wbarconfgen.sh n",
-        "on-click-right": "~/.config/waybar/scripts/wbarconfgen.sh p",
-        "on-click-middle": "sleep 0.1 && ~/.config/waybar/scripts/quickapps.sh kitty firefox spotify code dolphin",
-        "interval" : 86400,
-        "tooltip": true
-    },
-
-    "custom/theme": {
-        "format": "{}",
-        "rotate": 0,
-        "exec": "echo ; echo 󰟡 switch theme",
-        "on-click": "~/.config/waybar/scripts/themeswitch.sh -n",
-        "on-click-right": "~/.config/waybar/scripts/themeswitch.sh -p",
-        "on-click-middle": "sleep 0.1 && ~/.config/waybar/scripts/themeselect.sh",
-        "interval" : 86400, // once every day
-        "tooltip": true
+        "format": "クリップ   {}",
+        "on-click": "~/.config/hypr/scripts/clipboard-manager.sh show",
+        "interval": 1,
+        "tooltip": false
     },
 
     "custom/wallchange": {
-        "format": "{}",
-        "rotate": 0,
-        "exec": "echo ; echo 󰆊 switch wallpaper",
+        "format": "壁紙 󰟡  {}",
+        "exec": "echo ; echo 変更",
         "on-click": "~/.config/waybar/scripts/swwwallpaper.sh -n",
         "on-click-right": "~/.config/waybar/scripts/swwwallpaper.sh -p",
         "on-click-middle": "sleep 0.1 && ~/.config/waybar/scripts/swwwallselect.sh",
-        "interval" : 86400, // once every day
+        "interval": 86400,
         "tooltip": true
     },
 
-	"wlr/taskbar": {
-		"format": "{icon}",
-		"rotate": 0,
-		"icon-size": 18,
-		"icon-theme": "Tela-circle-dracula",
-        "spacing": 0,
-		"tooltip-format": "{title}",
-		"on-click": "activate",
-		"on-click-middle": "close",
-		"ignore-list": [
-			"Alacritty"
-		],
-		"app_ids-mapping": {
-			"firefoxdeveloperedition": "firefox-developer-edition"
-		}
-	},
-
     "custom/spotify": {
         "exec": "python ~/.config/waybar/scripts/mediaplayer.py spotify",
-        "format": " {}",
+        "format": "音楽  {}",
         "return-type": "json",
-        "interval": 1,
         "on-click": "playerctl play-pause --player=spotify",
         "on-click-right": "playerctl next --player=spotify",
         "on-click-middle": "playerctl previous --player=spotify",
         "on-scroll-up": "~/.config/waybar/scripts/volumecontrol.sh -i",
         "on-scroll-down": "~/.config/waybar/scripts/volumecontrol.sh -d",
         "max-length": 25,
+        "interval": 1,
         "tooltip": true
-    },    
+    },
 
     "idle_inhibitor": {
         "format": "{icon}",
-        "rotate": 0,
         "format-icons": {
-            "activated": "󰥔",
-            "deactivated": ""
+            "activated": "活性",
+            "deactivated": "非活性"
         }
     },
 
     "clock": {
-        "format": "{:%I:%M %p}",
-        "rotate": 0,
-        "format-alt": "{:%R 󰃭 %d·%m·%y}",
-        "tooltip-format": "<tt>{calendar}</tt>",
+        "format": "󰥔  {:%H時%M分}",
+        "format-alt": "  {:%Y年%m月%d日 %H時%M分}",
+        "tooltip-format": "  {:%Y年%m月%d日 %H時%M分}",
         "calendar": {
             "mode": "month",
             "mode-mon-col": 3,
@@ -150,96 +106,77 @@
         }
     },
 
-    "tray": {
-        "icon-size": 18,
-        "rotate": 0,
-        "spacing": 5
-    },
-
     "battery": {
         "states": {
-            "good": 95,
+            "good": 80,
             "warning": 30,
             "critical": 20
         },
-        "format": "{icon} {capacity}%",
-        "rotate": 0,
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
+        "format": "{icon} 󱊣  {capacity}%",
+        "format-charging": "充電 {capacity}%",
+        "format-plugged": "電源 {capacity}%",
         "format-alt": "{time} {icon}",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        "format-icons": ["空", "低", "中", "高", "満"],
+        "interval": 1 
+
     },
 
     "backlight": {
         "device": "intel_backlight",
-        "rotate": 0,
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "format": "明るさ 󰛨  {percent}%",
+        "format-icons": ["暗", "中", "明"],
         "on-scroll-up": "brightnessctl set 1%+",
         "on-scroll-down": "brightnessctl set 1%-",
-        "min-length": 6
+        "min-length": 6,
+        "interval": 1
     },
 
     "network": {
-        "tooltip": true,
-        "format-wifi": " ",
-        "rotate": 0,
-        "format-ethernet": "󰈀 ",
-        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
-        "format-linked": "󰈀 {ifname} (No IP)",
-        "format-disconnected": "󰖪 ",
-        "tooltip-format-disconnected": "Disconnected",
-        "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
-        "interval": 2,
+        "format-wifi": "無線  {essid}",
+        "format-ethernet": "有線",
+        "format-linked": "接続 {ifname}",
+        "format-disconnected": "切断",
+        "format-alt": "速度: {bandwidthDownBytes} ↓ {bandwidthUpBytes} ↑",
+        "tooltip-format": "ネットワーク: {essid}\n信号強度: {signalStrength}%\nIP: {ipaddr}"
     },
 
-    
     "bluetooth": {
-        "format": "",
-        "format-connected": "󰂱",
-        "format-disabled": "󰂲",
-        "rotate": 0,
-        "format-connected-battery": "{icon} {num_connections}",
-        // "format-connected-battery": "{icon} {device_alias}-{device_battery_percentage}%",
-        "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
-        // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device If this config option is not defined or none of the devices in the list are connected, it will fall back to showing the last connected device.
-        "tooltip-format": "{controller_alias}\n{num_connections} connected",
-        "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%"
+        "format": "蓝牙  {status}",
+        "format-connected": "蓝牙  {device_alias}",
+        "format-disabled": "蓝牙 オフ",
+        "tooltip-format": "{controller_alias}\n{num_connections} 接続"
     },
 
     "pulseaudio": {
-        "format": "{icon} {volume}",
-        "rotate": 0,
-        "format-muted": "婢",
+        "format": "{icon}   {volume}%",
+        "format-muted": "音量 ✕",
         "on-click-middle": "~/.config/waybar/scripts/volumecontrol.sh -o",
         "on-scroll-up": "~/.config/waybar/scripts/volumecontrol.sh -i",
         "on-scroll-down": "~/.config/waybar/scripts/volumecontrol.sh -d",
         "tooltip-format": "{icon} {desc} // {volume}%",
         "scroll-step": 5,
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headphone": "耳",
+            "hands-free": "手",
+            "headset": "セット",
+            "phone": "電話",
+            "portable": "携帯",
+            "car": "車",
+            "default": ["音", "音", "音"]
         }
     },
 
-   "custom/notifications": {
+    "custom/notifications": {
         "format": "{icon}",
         "format-icons": {
-            "notification": "<span foreground='white'></span>",
-            "none": "<span foreground='gray'></span>",
-            "dnd-notification": "<span foreground='red'></span>",
-            "dnd-none": "<span foreground='red'></span>",
-            "inhibited-notification": "<span foreground='orange'></span>",
-            "inhibited-none": "<span foreground='orange'></span>",
-            "dnd-inhibited-notification": "<span foreground='red'></span>",
-            "dnd-inhibited-none": "<span foreground='red'></span>"
+            "notification": "<span foreground='white'>通知</span>",
+            "none": "<span foreground='gray'>無</span>",
+            "dnd-notification": "<span foreground='red'>拒否</span>",
+            "dnd-none": "<span foreground='red'>拒否</span>",
+            "inhibited-notification": "<span foreground='orange'>抑制</span>",
+            "inhibited-none": "<span foreground='orange'>抑制</span>",
+            "dnd-inhibited-notification": "<span foreground='red'>拒否</span>",
+            "dnd-inhibited-none": "<span foreground='red'>拒否</span>"
         },
         "return-type": "json",
         "exec-if": "which dunstctl",
@@ -247,58 +184,52 @@
         "on-click": "dunstctl set-paused toggle",
         "on-click-right": "dunstctl history-pop",
         "escape": true
-    }, 
+    },
 
     "custom/keybindhint": {
-        "format": " ",
-        "rotate": 0,
+        "format": "キー",
         "on-click": "~/.config/waybar/scripts/keybinds_hint.sh"
     },
 
-
-// modules for padding //
-
     "custom/l_end": {
         "format": " ",
-        "interval" : "once",
+        "interval": "once",
         "tooltip": false
     },
 
     "custom/r_end": {
         "format": " ",
-        "interval" : "once",
+        "interval": "once",
         "tooltip": false
     },
 
     "custom/sl_end": {
         "format": " ",
-        "interval" : "once",
+        "interval": "once",
         "tooltip": false
     },
 
     "custom/sr_end": {
         "format": " ",
-        "interval" : "once",
+        "interval": "once",
         "tooltip": false
     },
 
     "custom/rl_end": {
         "format": " ",
-        "interval" : "once",
+        "interval": "once",
         "tooltip": false
     },
 
     "custom/rr_end": {
         "format": " ",
-        "interval" : "once",
+        "interval": "once",
         "tooltip": false
     },
 
     "custom/padd": {
         "format": "  ",
-        "interval" : "once",
+        "interval": "once",
         "tooltip": false
     }
-
 }
-

@@ -26,7 +26,7 @@ def get_song_title(player):
         return None
     return result.stdout.strip()
 
-
+'''
 def main():
     player = sys.argv[1] if len(sys.argv) > 1 else "spotify"
     status = get_player_status(player)
@@ -41,6 +41,23 @@ def main():
             f"Status: {status}\nTitle: {title}" if title else "No title available"
         ),
         "class": status.lower(),
+    }
+    print(json.dumps(output))
+'''
+def main():
+    player = sys.argv[1] if len(sys.argv) > 1 else "spotify"
+    status = get_player_status(player)
+    if status is None:
+        print(json.dumps({"text": ""}))
+        return
+
+    title = get_song_title(player)
+    output = {
+        "text": title if title else "No title available",
+        "tooltip": (
+            f"Status: {status}\nTitle: {title}" if title else "No title available"
+        ),
+        "class": "playing" if status == "Playing" else "paused",
     }
     print(json.dumps(output))
 

@@ -58,6 +58,7 @@ cat <<EOF > ~/.config/waybar/theme.css
 @define-color bar-bg rgba($R, $G, $B, 0.4);
 @define-color main-bg rgba($R, $G, $B, 0.8);
 @define-color main-fg rgba($INV_R, $INV_G, $INV_B, 1);
+@define-color wb-bg rgba($R, $G, $B, 0.3);
 
 @define-color wb-act-bg rgba($INV_R, $INV_G, $INV_B, 0.8);
 @define-color wb-act-fg rgba($R, $G, $B, 1);
@@ -241,10 +242,10 @@ echo "Archivo colors.conf actualizado para Kitty"
 # Genera el archivo CSS para la página de inicio de Firefox
 cat <<EOF > ~/Documents/Home/firefox-colors.css
 :root {
-  --bg-color: rgba($R, $G, $B, 0.05);
-  --fg-color: rgba($INV_R, $INV_G, $INV_B, 1);
-  --accent-color: rgba($((R+INV_R)/2), $((G+INV_G)/2), $((B+INV_B)/2), 1);
-  --hover-color: rgba($R, $G, $B, 0.05);
+    --bg-color: rgba($R, $G, $B, 0.05);
+    --fg-color: rgba($INV_R, $INV_G, $INV_B, 1);
+    --accent-color: rgba($((R + INV_R) / 2), $((G + INV_G) / 2), $((B + INV_B) / 2), 1);
+    --hover-color: rgba($R, $G, $B, 0.05);
 }
 EOF
 
@@ -262,11 +263,11 @@ update_firefox_css() {
     local fg_color=$(printf "#%02x%02x%02x" $INV_R $INV_G $INV_B)
 
     # Colores derivados
-    local toolbar_bg=$(printf "#%02x%02x%02x" $((R*95/100)) $((G*95/100)) $((B*95/100)))
+    local toolbar_bg=$(printf "#%02x%02x%02x" $((R * 95 / 100)) $((G * 95 / 100)) $((B * 95 / 100)))
     local toolbar_fg=$(printf "#%02x%02x%02x" $INV_R $INV_G $INV_B)
-    local tab_bg=$(printf "#%02x%02x%02x" $((R*90/100)) $((G*90/100)) $((B*90/100)))
+    local tab_bg=$(printf "#%02x%02x%02x" $((R * 90 / 100)) $((G * 90 / 100)) $((B * 90 / 100)))
     local tab_fg=$(printf "#%02x%02x%02x" $INV_R $INV_G $INV_B)
-    local urlbar_bg=$(printf "#%02x%02x%02x" $((R*85/100)) $((G*85/100)) $((B*85/100)))
+    local urlbar_bg=$(printf "#%02x%02x%02x" $((R * 85 / 100)) $((G * 85 / 100)) $((B * 85 / 100)))
     local urlbar_fg=$(printf "#%02x%02x%02x" $INV_R $INV_G $INV_B)
 
     if [ "$is_dark" = "true" ]; then
@@ -274,9 +275,9 @@ update_firefox_css() {
         local temp=$bg_color
         bg_color=$fg_color
         fg_color=$temp
-        toolbar_bg=$(printf "#%02x%02x%02x" $((255-R*95/100)) $((255-G*95/100)) $((255-B*95/100)))
-        tab_bg=$(printf "#%02x%02x%02x" $((255-R*90/100)) $((255-G*90/100)) $((255-B*90/100)))
-        urlbar_bg=$(printf "#%02x%02x%02x" $((255-R*85/100)) $((255-G*85/100)) $((255-B*85/100)))
+        toolbar_bg=$(printf "#%02x%02x%02x" $((255 - R * 95 / 100)) $((255 - G * 95 / 100)) $((255 - B * 95 / 100)))
+        tab_bg=$(printf "#%02x%02x%02x" $((255 - R * 90 / 100)) $((255 - G * 90 / 100)) $((255 - B * 90 / 100)))
+        urlbar_bg=$(printf "#%02x%02x%02x" $((255 - R * 85 / 100)) $((255 - G * 85 / 100)) $((255 - B * 85 / 100)))
     fi
 
     # Actualizar colores en el archivo CSS
@@ -290,7 +291,7 @@ update_firefox_css() {
 }
 
 # Actualizar archivos CSS de Firefox
-firefox_profile_dir="$HOME/.mozilla/firefox/emjksyxk.default-release"
+firefox_profile_dir="$HOME/.mozilla/firefox/ssa2lq0m.default-release"
 update_firefox_css "$firefox_profile_dir/chrome/WhiteSur/colors/light.css" "false"
 update_firefox_css "$firefox_profile_dir/chrome/WhiteSur/colors/dark.css" "true"
 
@@ -578,20 +579,35 @@ EOF
 # Aplica los cambios en Spicetify
 spicetify apply
 
-# Actualiza los colores de dunst
 update_dunst_colors() {
-    local bg_color=$(printf "#%02x%02x%02x99" $R $G $B)
-    local fg_color=$(printf "#%02x%02x%02x" $INV_R $INV_G $INV_B)
-    local frame_color=$(printf "#%02x%02x%02x" $((R+INV_R)/2) $((G+INV_G)/2) $((B+INV_B)/2))
+    echo "Actualizando colores de dunst..." >> /tmp/dunst_update.log
+    export DUNST_BG=$(printf "#%02x%02x%02x99" $R $G $B)
+    export DUNST_FG=$(printf "#%02x%02x%02x" $INV_R $INV_G $INV_B)
+    export DUNST_FRAME=$(printf "#%02x%02x%02x" $((R+INV_R)/2) $((G+INV_G)/2) $((B+INV_B)/2))
 
-    sed -i "s/^background = .*/background = \"$bg_color\"/" ~/.config/dunst/dunstrc
-    sed -i "s/^foreground = .*/foreground = \"$fg_color\"/" ~/.config/dunst/dunstrc
-    sed -i "s/^frame_color = .*/frame_color = \"$frame_color\"/" ~/.config/dunst/dunstrc
+    echo "Nuevos colores: bg=$DUNST_BG, fg=$DUNST_FG, frame=$DUNST_FRAME" >> /tmp/dunst_update.log
+
+    # Actualizar el archivo de configuración de dunst
+    sed -i "s/background = .*/background = \"$DUNST_BG\"/" ~/.config/dunst/dunstrc
+    sed -i "s/foreground = .*/foreground = \"$DUNST_FG\"/" ~/.config/dunst/dunstrc
+    sed -i "s/frame_color = .*/frame_color = \"$DUNST_FRAME\"/" ~/.config/dunst/dunstrc
+
+    # Reiniciar dunst con las nuevas variables de entorno
+    pkill dunst
+    dunst &
+    echo "Dunst reiniciado" >> /tmp/dunst_update.log
 }
 
 # Llama a la función para actualizar los colores de dunst
 update_dunst_colors
 
+# Actualiza los colores de btop
+~/.config/btop/update_btop_colors.sh
+
+# Recarga btop si está en ejecución
+if pgrep btop > /dev/null; then
+    pkill -USR2 btop
+fi
 
 # Recarga la configuración de Kitty
 killall -SIGUSR1 kitty
@@ -601,5 +617,15 @@ killall -SIGUSR2 waybar && echo "Señal de recarga enviada a Waybar"
 
 # Toca el archivo CSS para asegurar que Waybar detecte el cambio
 touch ~/.config/waybar/style.css
+
+# Actualiza los colores de cmus
+~/.config/cmus/update_colors.sh
+
+# Actualiza los colores de bpytop
+~/.config/bpytop/update_bpytop_colors.sh
+
+# Update Firefox colors
+~/.config/waybar/scripts/update_firefox_colors.sh
+
 
 dunstify "Colores actualizados" "Los colores de los programas han sido actualizados con éxito"
