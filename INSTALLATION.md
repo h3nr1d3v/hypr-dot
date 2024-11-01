@@ -23,10 +23,6 @@ yay -S cmus cmatrix-git  dunst ranger mpv swww swaync sway-lock sway-bg waybar  
 git clone https://github.com/h3nr1d3v/hypr-dot.git
 cd hypr-dot
 ```
-```markdown project="Hyprland Config" file="docs/INSTALLATION.md"
-...
-```
-
 ### Required Packages (AUR)
 
 Install the following packages using your AUR helper (yay):
