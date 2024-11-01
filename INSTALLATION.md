@@ -66,7 +66,8 @@ cp -r .config/* ~/.config/
 cp -r .local/* ~/.local/
 
 # Copy mozilla/chrome files
-cp -r .mozilla/chrome/* ~/.mozilla/chrome/
+cp -r .mozilla/chrome/* "$(find ~/.mozilla/firefox -type d -name '*default-release*' -print -quit)/"
+
 
 # Copy Documents
 cp -r Documents/Home/* ~/Documents/Home/
