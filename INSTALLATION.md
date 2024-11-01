@@ -53,7 +53,7 @@ cd hypr-dot
 2. Create necessary directories (if they don't exist):
 
 ```bash
-mkdir -p ~/.config ~/.local ~/.mozilla/chrome ~/Documents/Home ~/Pictures/Wallpapers ~/.local/share/icons
+mkdir -p ~/.config ~/.local ~/Documents/Home ~/Pictures/Wallpapers ~/.local/share/icons
 ```
 
 3. Copy configuration files:
