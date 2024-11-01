@@ -1,163 +1,171 @@
-# Arch Linux + Hyprland Configuration
+<div align="center">
 
-Welcome to my personal Arch Linux configuration featuring Hyprland! This repository contains my dotfiles and setup instructions for a customized Arch Linux environment with Hyprland as the window manager. This repository includes a series of color schemes that dynamically adapt to the wallpaper, providing a cohesive and visually appealing experience.
+# 🌟 Arch Linux + Hyprland Configuration
 
-## Table of Contents
+[![Stars](https://img.shields.io/github/stars/h3nr1d3v/hypr-dot?color=pink&style=for-the-badge)](https://github.com/h3nr1d3v/hypr-dot/stargazers)
+[![License](https://img.shields.io/github/license/h3nr1d3v/hypr-dot?color=purple&style=for-the-badge)](LICENSE)
+[![Issues](https://img.shields.io/github/issues/h3nr1d3v/hypr-dot?color=pink&style=for-the-badge)](https://github.com/h3nr1d3v/hypr-dot/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/h3nr1d3v/hypr-dot?color=purple&style=for-the-badge)](https://github.com/h3nr1d3v/hypr-dot/commits/main)
 
-- [Preview](#preview)
-- [Installation](#installation)
-- [Required Packages](#required-packages)
-- [Wireless Setup (Optional)](#wireless-setup-optional)
-- [Usage](#usage)
-- [Key Shortcuts](#key-shortcuts)
-- [Contributing](#contributing)
-- [License](#license)
+<img src="https://github.com/user-attachments/assets/b0a38360-9a21-47c8-90d6-1da4bd41af83" alt="Desktop Preview" width="800px"/>
 
-## Preview
+*A highly customized Arch Linux environment featuring Hyprland as the window manager, with dynamic color schemes that adapt to your wallpaper.*
 
-![Wallpaper](https://github.com/user-attachments/assets/49ea4250-3362-4861-858a-1d6b3ddaa7ef)
-![Wallpaper1](https://github.com/user-attachments/assets/cbe62959-4e16-409e-acc0-9b4c13488e6d)
-![Wallpaper2](https://github.com/user-attachments/assets/afca1b7b-1fe7-4c98-9f3f-6c156641d49b)
-![Wallpaper3](https://github.com/user-attachments/assets/dde8dc83-d8d7-400c-9b51-667d58df155b)
-![Wallpaper4](https://github.com/user-attachments/assets/2ff1bfb0-70aa-4614-8d22-235c0c2a7b0a)
-![Wallpaper5](https://github.com/user-attachments/assets/7c389659-5246-46d1-8116-c02170458980)
-![Wallpaper6](https://github.com/user-attachments/assets/7f6938e3-6a6d-4ea2-8995-7c677d5d1324)
-![Wallpaper7](https://github.com/user-attachments/assets/6e21f96c-7079-45f3-8c2f-7ef36813819c)
-![Wallpaper8](https://github.com/user-attachments/assets/fd7662b4-f426-47ac-99c4-8b89b33521d6)
-![Wallpaper9](https://github.com/user-attachments/assets/f243965f-86f0-4c8f-9ed5-c100a7c5ab89)
-![Wallpaper10](https://github.com/user-attachments/assets/cec4a850-555b-48ae-997e-4de06e1ae4df)
-![Wallpaper11](https://github.com/user-attachments/assets/d9ea40d3-0dea-4adc-9767-836505c2c693)
-![Wallpaper12](https://github.com/user-attachments/assets/367f4db7-9a0e-4280-91f7-1c743513c902)
-![Wallpaper13](https://github.com/user-attachments/assets/267b2a39-69b8-4d28-89bf-1d5aaa530468)
+---
+
+[📦 Installation](INSTALLATION.md) • 
+[✨ Features](#-features) • 
+[⚡ Quick Start](#-quick-start) • 
+[⚙️ Configuration](CONFIGURATION.md) • 
+[📚 Documentation](#-documentation)
+
+</div>
+
+## 📑 Table of Contents
+
+- [🌟 Arch Linux + Hyprland Configuration](#-arch-linux--hyprland-configuration)
+  - [📑 Table of Contents](#-table-of-contents)
+  - [✨ Features](#-features)
+  - [⚡ Quick Start](#-quick-start)
+  - [⌨️ Essential Keybindings](#️-essential-keybindings)
+  - [🎨 Theming](#-theming)
+  - [📚 Documentation](#-documentation)
+  - [📈 Project Stats](#-project-stats)
+  - [🤝 Contributing](#-contributing)
+  - [📄 License](#-license)
+  - [🙏 Acknowledgments](#-acknowledgments)
+
+## ✨ Features
+
+<img src="https://github.com/user-attachments/assets/9f99da0c-85e7-425b-8e67-20ac06a7562b" alt="Features Preview" align="right" width="400px"/>
+
+- 🎨 **Dynamic Theming**
+  - Automatic color adaptation based on wallpaper
+  - Seamless integration with all applications
+  - Real-time color updates
+
+- 🛠️ **Custom Scripts**
+  - Advanced clipboard management
+  - Intelligent battery notifications
+  - Dynamic wallpaper handling
+  - Media player controls
+
+- 🧰 **Integrated Tools**
+  - Waybar with custom modules
+  - Rofi with themed menus
+  - Dunst notifications
+  - Custom file manager integration
+
+- ⌨️ **Optimized Workflow**
+  - Intuitive keybindings
+  - Workspace management
+  - Window grouping
+  - Multi-monitor support
+
+## ⚡ Quick Start
+
+1. **Installation**
+   ```bash
+   git clone https://github.com/h3nr1d3v/hypr-dot.git
+   cd hypr-dot
+    ```
+
+2. **Post-Installation**
+
+1. Follow the [Installation Guide](INSTALLATION.md) for detailed setup instructions
+2. Configure your system using the [Configuration Guide](CONFIGURATION.md)
+3. Check [Troubleshooting](TROUBLESHOOTING.md) if you encounter any issues
 
 
-1. Clone this repository:
 
-```bash
-git clone https://github.com/h3nr1d3v/hypr-dot.git 
-```
 
-2. Change to the repository directory:
 
-```bash
-cd hypr-dot
-```
+## ⌨️ Essential Keybindings
 
-3. Copy the configuration files to your home directory:
+| Category              | Keybind         | Action          |
+| --------------------- | --------------- | --------------- |
+| **Window Management** | `SUPER + Q`     | Close window    |
+|                       | `SUPER + W`     | Toggle floating |
+|                       | `SUPER + G`     | Toggle group    |
+| **Applications**      | `SUPER + T`     | Terminal        |
+|                       | `SUPER + E`     | File manager    |
+|                       | `SUPER + R`     | Show Rofi       |
+|                       | `SUPER + F`     | Firefox         |
+| **Media**             | `XF86AudioPlay` | Play/Pause      |
+|                       | `XF86AudioNext` | Next track      |
+|                       | `XF86AudioPrev` | Previous track  |
 
-```bash
-cp -r .config/* ~/.config/
-cp -r .local/* ~/.local/share/
-cp -r Pictures/* ~/Pictures/
-```
 
-## Required Packages:
-```bash
-### Pacman Packages
+## 🎨 Theming
 
-Install the following packages using pacman:
+The configuration automatically generates themes based on your wallpaper:
 
-```bash
-sudo pacman -S hyprland brightnessctl libpng libjpeg-turbo imagemagick gawk grep dunst ripgrep vim neovim ffmpeg v4l-utils
+- **Waybar**: Dynamic colors and transparency
+- **Rofi**: Matching color scheme with blur effects
+- **Terminal**: Adaptive color palette
+- **Applications**: Consistent theme integration
 
-### AUR packages
-```bash
-yay -S dunst ranger swww waybar sway-bg flameshot-git pactl pamixer
-```
-## Wireless Setup (Optional)
-If you prefer to use `iwd` instead of NetworkManager for wireless connectivity, follow these steps:
 
-1. Install the required packages:
+## 📚 Documentation
 
-```bash
-sudo pacman -S iwd dhcpcd
+Our comprehensive documentation is split into several focused guides:
 
-2. Enable and start the services:
+- 📦 [Installation Guide](INSTALLATION.md)
 
-```bash
-sudo systemctl enable --now iwd
-sudo systemctl enable --now dhcpcd
+- Prerequisites
+- Step-by-step installation
+- Post-installation setup
 
-3. Disable and stop the NetworkManager service:
 
-```bash
-sudo systemctl disable --now NetworkManager
 
-4. Configure your wireless connection using `iwctl`:
+- ⚙️ [Configuration Guide](CONFIGURATION.md)
 
-```bash
-iwctl
-[iwd]# device list
-[iwd]# station <device> scan
-[iwd]# station <device> get-networks
-[iwd]# station <device> connect <SSID>
-```
+- Basic configuration
+- Advanced customization
+- Wireless setup
 
-## Usage
-After installation and setup, log out and choose Hyprland as your window manager at the login screen. Your customized environment should now be ready to use!
 
-## Key Shortcuts
 
-Here are some of the key shortcuts defined in the Hyprland configuration:
+- 📜 [Scripts Documentation](SCRIPTS.md)
 
-### Window/Session Management
-- `SUPER + Q`: Kill active window
-- `ALT + F4`: Kill active window
-- `SUPER + X`: Exit Hyprland session
-- `SUPER + W`: Toggle floating for active window
-- `SUPER + G`: Toggle group
-- `ALT + Enter`: Toggle fullscreen
-- `SUPER + SHIFT + R`: Reload Waybar
+- Available scripts
+- Usage examples
+- Customization options
 
-### Application Shortcuts
-- `SUPER + T`: Open Alacritty terminal
-- `SUPER + E`: Open Dolphin file manager
-- `SUPER + F`: Open Firefox
-- `SUPER + D`: Open Discord
-- `SUPER + O`: Open OBS
-- `SUPER + S`: Open Spotify
-- `SUPER + R`: Open Rofi launcher
-- `SUPER + C`: Open Visual Studio Code
 
-### Audio Control
-- `XF86AudioLowerVolume`: Decrease volume
-- `XF86AudioRaiseVolume`: Increase volume
-- `XF86AudioMute`: Mute/unmute audio
-- `F11`: Toggle microphone mute
-- `XF86AudioPlay`: Play/pause media
-- `XF86AudioNext`: Next track
-- `XF86AudioPrev`: Previous track
 
-### Brightness Control
-- `XF86MonBrightnessDown`: Decrease brightness
-- `XF86MonBrightnessUp`: Increase brightness
+- ❓ [Troubleshooting Guide](TROUBLESHOOTING.md)
 
-### Screenshot
-- `Print`: Take a screenshot (using Flameshot)
+- Common issues
+- Solutions
+- FAQ
 
-### Window Focus
-- `SUPER + Arrow keys`: Move focus
-- `ALT + Tab`: Move focus
 
-### Workspace Management
-- `SUPER + (1-5)`: Switch to workspace 1-5
-- `SUPER + SHIFT + (1-3)`: Move active window to workspace 1-3
-- `SUPER + Mouse Wheel`: Scroll through workspaces
 
-### Window Movement/Resizing
-- `SUPER + SHIFT + Arrow keys`: Resize active window
-- `SUPER + Mouse Left Click`: Move window
-- `SUPER + Mouse Right Click`: Resize window
 
-### Special Functions
-- `SUPER + ALT + S`: Move window to special workspace
-- `SUPER + Z`: Toggle special workspace
-- `SUPER + J`: Toggle split (dwindle layout)
 
-Remember to customize these shortcuts according to your preferences in the `~/.config/hypr/hyprland.conf` file.
+## 📈 Project Stats
 
-## Contributing
-Contributions are welcome! Feel free to open an issue or submit a pull request if you have any suggestions or improvements.
+<div align="center">
 
-## License
+![Star History Chart](https://api.star-history.com/svg?repos=h3nr1d3v/hypr-dot&type=Date)
+</div>
+
+## 🤝 Contributing
+
+We welcome contributions! Please check our:
+
+- [Contributing Guidelines](CONTRIBUTING.md) for code contributions
+- [Issue Tracker](https://github.com/h3nr1d3v/hypr-dot/issues) for bug reports and feature requests
+- [Discussions](https://github.com/h3nr1d3v/hypr-dot/discussions) for questions and ideas
+
+
+## 📄 License
+
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Hyprland](https://hyprland.org/) for the amazing window manager
+- [Waybar](https://github.com/Alexays/Waybar) for the status bar
+- All contributors and users of this configuration

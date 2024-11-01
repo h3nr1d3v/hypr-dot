@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Rutas a los archivos de sonido
-LOCK_SOUND="/home/h3nr1d3v/Music/sounds/lock.wav"
-UNLOCK_SOUND="/home/h3nr1d3v/Music/sounds/unlock.wav"
-WRONG_SOUND="/home/h3nr1d3v/Music/sounds/wrong.wav"
+LOCK_SOUND="~/Music/sounds/lock.wav"
+UNLOCK_SOUND="~/Music/sounds/unlock.wav"
+WRONG_SOUND="~/Music/sounds/wrong.wav"
 
 # Rutas de las imágenes
-CLEAR_IMAGE="/home/h3nr1d3v/Pictures/Wallpapers/imagen_061.png"
-BLUR_IMAGE="/home/h3nr1d3v/Pictures/Wallpapers/imagen_061_blur.png"
+CLEAR_IMAGE="~/Pictures/Wallpapers/imagen_061.png"
+BLUR_IMAGE="~/Pictures/Wallpapers/imagen_061_blur.png"
 
 # Función para reproducir sonido
 play_sound() {
