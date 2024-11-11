@@ -37,7 +37,7 @@
 
 ## ✨ Features
 
-<img src="https://github.com/user-attachments/assets/9f99da0c-85e7-425b-8e67-20ac06a7562b" alt="Features Preview" align="right" width="400px"/>
+<img src="https://github.com/user-attachments/assets/4006aceb-f016-4e6b-80e0-40cbdf4cd5e5" alt="Features Preview" align="right" width="400px"/>
 
 - 🎨 **Dynamic Theming**
   - Automatic color adaptation based on wallpaper
