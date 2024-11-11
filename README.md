@@ -7,7 +7,7 @@
 [![Issues](https://img.shields.io/github/issues/h3nr1d3v/hypr-dot?color=pink&style=for-the-badge)](https://github.com/h3nr1d3v/hypr-dot/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/h3nr1d3v/hypr-dot?color=purple&style=for-the-badge)](https://github.com/h3nr1d3v/hypr-dot/commits/main)
 
-<img src="https://github.com/user-attachments/assets/b0a38360-9a21-47c8-90d6-1da4bd41af83" alt="Desktop Preview" width="800px"/>
+<img src="https://github.com/user-attachments/assets/243240b1-56f2-4ffb-be32-9588f4b9153b" alt="Desktop Preview" width="800px"/>
 
 *A highly customized Arch Linux environment featuring Hyprland as the window manager, with dynamic color schemes that adapt to your wallpaper.*
 
